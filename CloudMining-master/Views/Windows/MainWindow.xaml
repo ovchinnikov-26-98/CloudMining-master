@@ -1,0 +1,97 @@
+﻿<Window x:Class="CloudMining.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="clr-namespace:CloudMining.ViewModels"
+        mc:Ignorable="d"
+        Height="720" Width="1280"
+		ResizeMode="NoResize"
+		WindowStartupLocation="CenterScreen"
+		Background="#2F4166">
+
+	<Window.DataContext>
+		<vm:MainWindowViewModel/>
+	</Window.DataContext>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="2.5*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="10*"/>
+		</Grid.RowDefinitions>
+
+		<DockPanel Grid.ColumnSpan="2">
+			<TextBlock Text="CloudMining" Foreground="#6D97EA" FontSize="28" FontWeight="UltraBold" Margin="15, 0" VerticalAlignment="Center"/>
+		</DockPanel>
+
+		<ListView Grid.Row="1" Foreground="White" FontSize="24">
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="1"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
+					<Image Source="\Resources/statistics.png" Width="50"/>
+					<TextBlock Text="Статистика проекта" VerticalAlignment="Center"/>
+				</DockPanel>
+			</ListViewItem>
+			
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="2"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
+					<Image Source="\Resources/member.png" Width="50"/>
+					<TextBlock Text="Участники" VerticalAlignment="Center"/>
+				</DockPanel>
+			</ListViewItem>
+
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="3"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
+					<Image Source="\Resources/payouts.png" Width="50"/>
+					<TextBlock Text="Выплаты" VerticalAlignment="Center"/>
+				</DockPanel>
+			</ListViewItem>
+
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="4"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
+					<Image Source="\Resources/deposit.png" Width="50"/>
+					<TextBlock Text="Пополнения" VerticalAlignment="Center"/>
+				</DockPanel>
+			</ListViewItem>
+
+            <ListViewItem Foreground="#ACC1EA">
+                <ListViewItem.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
+                </ListViewItem.InputBindings>
+                <DockPanel>
+                    <Image Source="\Resources/expense.png" Width="50"/>
+                    <TextBlock Text="Покупки" VerticalAlignment="Center"/>
+                </DockPanel>
+            </ListViewItem>
+
+            <ListViewItem Foreground="#ACC1EA" HorizontalContentAlignment="Stretch">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="6"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
+					<Image Source="\Resources/electricity.png" Width="50"/>
+					<TextBlock Text="Электричество" VerticalAlignment="Center"/>
+				</DockPanel>
+			</ListViewItem>
+		</ListView>
+
+		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">
+			<ContentControl Content="{Binding MainContentControl}" MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UIElement}},Path=ActualHeight}"/>
+		</StackPanel>
+	</Grid>
+</Window>
